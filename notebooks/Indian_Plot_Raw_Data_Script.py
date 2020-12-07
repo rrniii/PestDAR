@@ -132,8 +132,10 @@ def main():
 
 
 
-    data_dir='/Volumes/Neely/PestDAR/Indian_Raw_Radar_Data/' # Location of all the data
-    plotpath='/Volumes/Neely/PestDAR/Indian_Raw_Radar_Data_Plots/' # where you want to put the plots
+    #data_dir='/Volumes/Neely/PestDAR/Indian_Raw_Radar_Data/' # Location of all the data
+    data_dir='/gws/nopw/j04/ncas_radar_vol2/pestdar/india/raw_data'
+    #plotpath='/Volumes/Neely/PestDAR/Indian_Raw_Radar_Data_Plots/' # where you want to put the plots
+    plotpath='/gws/nopw/j04/ncas_radar_vol2/pestdar/india/raw_data_plots'
 
     all_files=glob(data_dir+ '*RAW*') #gets list of all data files.
 
