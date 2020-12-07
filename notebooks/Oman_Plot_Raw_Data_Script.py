@@ -119,7 +119,7 @@ def main():
 
             plt.savefig(fig_save_file_path + plot_file_name, dpi=100)
 
-            plt.close()
+            plt.close('all')
 
             del radar
             del display
@@ -127,7 +127,7 @@ def main():
     data_dir = '/Volumes/Neely/PestDAR/Oman_Raw_Netcdf_Radar_Data/sur/'
     plotpath = '/Volumes/Neely/PestDAR/Oman_Raw_Data_Plots/'
 
-    all_files=glob(data_dir+'**/' '*.nc',recursive=True)
+    all_files=glob(data_dir+'**/' '*202006*.nc',recursive=True)
 
     radar = pyart.io.read(all_files[0])
 
@@ -144,7 +144,7 @@ def main():
                 try:
                     plot_imd_radar(f,e,r,plotpath)
                 except:
-                    print(str(f) + 'has an issue.')
+                    print(str(f) + ' has an issue.')
 
 if __name__ == '__main__':
     main()

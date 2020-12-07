@@ -61,7 +61,7 @@ def main():
         display.set_limits((-R, R), (-R, R), ax=ax1)
 
         ax2 = fig.add_subplot(nrows, ncols, 2)
-        display.plot('differential_reflectivity', ele, ax=ax2, vmin=-2, vmax=10., title='Differential Reflectivity',
+        display.plot('differential_reflectivity', ele, ax=ax2, vmin=-5, vmax=20., title='Differential Reflectivity',
                      colorbar_label=radar.fields['differential_reflectivity']['units'],
                      axislabels=('', ''), cmap='pyart_RefDiff')
         display.set_limits((-R, R), (-R, R), ax=ax2)
@@ -73,7 +73,7 @@ def main():
         display.set_limits((-R, R), (-R, R), ax=ax3)
 
         ax4 = fig.add_subplot(nrows, ncols, 4)
-        display.plot('specific_differential_phase', ele, ax=ax4, vmin=-0.5, vmax=2.,
+        display.plot('specific_differential_phase', ele, ax=ax4, vmin=-0.5, vmax=4.,
                      title='Specific Differential Phase',
                      colorbar_label=radar.fields['specific_differential_phase']['units'],
                      axislabels=('', ''), cmap='pyart_Theodore16')
@@ -93,7 +93,7 @@ def main():
         display.set_limits((-R, R), (-R, R), ax=ax6)
 
         ax7 = fig.add_subplot(nrows, ncols, 7)
-        display.plot('spectrum_width', ele, ax=ax7, vmin=0, vmax=5., title='Spectrum Width',
+        display.plot('spectrum_width', ele, ax=ax7, vmin=0, vmax=4., title='Spectrum Width',
                      colorbar_label=radar.fields['spectrum_width']['units'],
                      axislabels=('East West distance from radar (km)', ''), cmap='pyart_NWS_SPW')
         display.set_limits((-R, R), (-R, R), ax=ax7)
@@ -101,7 +101,7 @@ def main():
         ax8 = fig.add_subplot(nrows, ncols, 8)
         display.plot('radar_echo_classification', ele, ax=ax8, title='Radar Echo Classification',
                      colorbar_label=radar.fields['radar_echo_classification']['units'],
-                     axislabels=('East West distance from radar (km)', ''), cmap='Accent')
+                     axislabels=('East West distance from radar (km)', ''), cmap='Cat12')
         display.set_limits((-R, R), (-R, R), ax=ax8)
 
         ax9 = fig.add_subplot(nrows, ncols, 9)
@@ -141,13 +141,13 @@ def main():
 
     #rge=[25,50,75,100,125,150,175,200,225,250] #select the different maximum ranges you want to plot in km
 
-    rge = [25,50,75,100]
+    rge = [65, 130]
 
     for f in all_files: #loop through files
         print(f) # print file name
-        print(radar.fixed_angle['data'])
+        print((radar.fixed_angle['data']))
 
-        for e in np.arange(0,len(radar.fixed_angle['data'])):  #loop through all angles
+        for e in np.arange(0,(radar.fixed_angle['data']<=6.0).sum()):  #loop through all angles
             for r in rge: #loop thorugh the maximum ranges you want to plot
                 try: # try plotting.
                     plot_imd_radar(f,e,r,plotpath) #mkae a plot for the file, elevation angle and maximum range you select.

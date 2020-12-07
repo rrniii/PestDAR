@@ -254,7 +254,7 @@ def main():
     data_dir = '/Volumes/Neely/PestDAR/Oman_Raw_Netcdf_Radar_Data/sur/'
     plotpath = '/Volumes/Neely/PestDAR/Oman_Raw_Data_Maps/'
 
-    all_files=glob(data_dir+'**/' '*.nc',recursive=True)
+    all_files=glob(data_dir+'**/*R-202006*.nc', recursive=True)
 
     radar = pyart.io.read(all_files[0])
 
@@ -264,7 +264,7 @@ def main():
             try:
                 plot_imd_radar(f,e,plotpath)
             except:
-                print(str(f) + 'has an issue.')
+                print(str(f) + ' has an issue.')
 
 if __name__ == '__main__':
     main()
